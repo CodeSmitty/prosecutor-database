@@ -45,7 +45,8 @@ Meteor.publish('searchAttorneys', function( search ) {
         $or: [
           { name: regex },
           { role: regex },
-          { state: regex }
+          { state: regex },
+          {  age: regex}
         ]
       };
 

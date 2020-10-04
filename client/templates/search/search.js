@@ -1,6 +1,7 @@
 Template.search.onCreated( () => {
   let template = Template.instance();
 
+  
   template.searchQuery = new ReactiveVar();
   template.searching = new ReactiveVar( false );
 
@@ -22,10 +23,15 @@ Template.search.helpers({
   }
 });
 
+
+
+
+
 Template.search.events({
   'keyup [name="search"]' ( event, template ) {
     let value = event.target.value.trim();
-
+    let slidevalue = event.target.value.val();
+    
     if ( value !== '' && event.keyCode === 13 ) {
       template.searchQuery.set( value );
       template.searching.set( true );

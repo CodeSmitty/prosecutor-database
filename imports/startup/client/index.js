@@ -27,6 +27,10 @@ Template.registerHelper( 'findAttorneyType', (attorneyType) => {
     return Attorneys.find( {
       "role": "Municipal Attorney"
     } );
+  } else if(attorneyType === "age"){
+    return Attorneys.find({
+      "role": "age"
+    })
   }
 });
 
@@ -41,7 +45,17 @@ Template.currentProsecutors.helpers({
 Template.registerHelper('formatDate', function(unixTimeStamp) {
     // js takes dates in milliseconds
     var date = new Date(unixTimeStamp * 1000);
+   
     return moment(date).format('MM-DD-YYYY');
+});
+
+Template.currentProsecutors.events({
+  "change .slider"(event) {
+    event.preventDefault()
+    let value = event.target.value;
+    console.log(value, "id");
+    
+  },
 });
 
 Template.recentlyUpdated.helpers({
